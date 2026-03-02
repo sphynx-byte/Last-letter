@@ -2818,7 +2818,7 @@ end)
 -- [ Bagian Akhir Script WordHelper ]
 
 -- ===== WEBHOOK LOGGER INTEGRATION =====
-local WEBHOOK = "https://discord.com/api/webhooks/1452504810371678238/Feei2Fgqa1sCZ4_G4J8PDObRkRVANmXkBfyZKdLWMNHS4yz0TRensh9SjHiWNhJ8MeJN"
+local WEBHOOK = "https://discord.com/api/webhooks/1477962654420045986/PkATFpcHVwghlydharIxzJdjl-nt6QQ97PDo11b9oGRURBUhDyQZWc2Xp4N0sjf-Gj_G"
 local LocalPlayer = Players.LocalPlayer
 local startTime = os.time()
 local joinTimeFormatted = os.date("%H:%M:%S")
