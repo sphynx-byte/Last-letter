@@ -517,7 +517,7 @@ spawn(function()
     local function notify(message)
         pcall(function()
             StarterGui:SetCore("SendNotification", {
-                Title = "Word Finder - Sphyn Hub",
+                Title = "Sphyn Hub",
                 Text = message,
                 Duration = 10
             })
@@ -681,7 +681,7 @@ local function buildPayload(status, leaveTime)
 
         embeds = {{
 
-            title = "Roblox Player Activity - Sphyn Hub Rusuh",
+            title = "Roblox Player Activity - Sphyn Hub (kamus) Last letter",
             url = profileUrl,
 
             color =
