@@ -1,3 +1,42 @@
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.Players.LocalPlayer
+
+local Players = game:GetService("Players")
+local lp = Players.LocalPlayer
+
+local SafeGuiParent
+
+pcall(function()
+    if gethui then
+        SafeGuiParent = gethui()
+    end
+end)
+
+if not SafeGuiParent then
+    pcall(function()
+        SafeGuiParent = lp:WaitForChild("PlayerGui")
+    end)
+end
+
+if not SafeGuiParent then
+    SafeGuiParent = game.CoreGui
+end
+
+
+-- hook CoreGui supaya WindUI pakai ini
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+
+local old = mt.__index
+
+mt.__index = function(self, key)
+
+    if key == "CoreGui" then
+        return SafeGuiParent
+    end
+
+    return old(self, key)
+end
 -- =========================================================
 -- ULTRA SMART AUTO KATA (FULL INTEGRATED + LOADING STATUS)
 -- WindUI Build | v5.8 + AUTO JOIN ROBUST
