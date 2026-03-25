@@ -348,18 +348,37 @@ end)
 
 -- =========================
 -- REMOTES
+-- =========================-- =========================
+-- SERVICES & REMOTES (FIXED)
 -- =========================
-local remotes         = ReplicatedStorage:WaitForChild("Remotes")
-local MatchUI         = remotes:WaitForChild("MatchUI")
-local SubmitWord      = remotes:WaitForChild("SubmitWord")
-local BillboardUpdate = remotes:WaitForChild("BillboardUpdate")
-local TypeSound       = remotes:WaitForChild("TypeSound")
-local UsedWordWarn    = remotes:WaitForChild("UsedWordWarn")
-local JoinTable       = remotes:WaitForChild("JoinTable")
-local LeaveTable      = remotes:WaitForChild("LeaveTable")
-local PlayerHit       = remotes:WaitForChild("PlayerHit")
-local PlayerCorrect   = remotes:WaitForChild("PlayerCorrect")
-local BillboardEnd    = remotes:FindFirstChild("BillboardEnd")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players           = game:GetService("Players")
+local Workspace         = game:GetService("Workspace")
+local HttpService       = game:GetService("HttpService")
+
+-- Cari folder remotes, jika tidak ada gunakan ReplicatedStorage sebagai parent
+local remoteParent = ReplicatedStorage:FindFirstChild("Remotes") or ReplicatedStorage
+
+-- Fungsi pembantu agar tidak stuck jika remote tidak ada
+local function safeWait(parent, name)
+    local found = parent:FindFirstChild(name)
+    if not found then
+        warn("⚠️ Remote '" .. name .. "' tidak ditemukan di " .. parent.Name)
+    end
+    return found
+end
+
+local MatchUI         = safeWait(remoteParent, "MatchUI")
+local SubmitWord      = safeWait(remoteParent, "SubmitWord")
+local BillboardUpdate = safeWait(remoteParent, "BillboardUpdate")
+local TypeSound       = safeWait(remoteParent, "TypeSound")
+local UsedWordWarn    = safeWait(remoteParent, "UsedWordWarn")
+local JoinTable       = safeWait(remoteParent, "JoinTable")
+local LeaveTable      = safeWait(remoteParent, "LeaveTable")
+local PlayerHit       = safeWait(remoteParent, "PlayerHit")
+local PlayerCorrect   = safeWait(remoteParent, "PlayerCorrect")
+local UpdateWordIndex = safeWait(remoteParent, "UpdateWordIndex")
+
 
 -- =========================
 -- STATE GLOBAL
